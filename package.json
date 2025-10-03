@@ -1,0 +1,13 @@
+{
+  "name": "zandmco-website",
+  "version": "1.0.0",
+  "description": "Z & M Co. - Earrings by Zara website",
+  "main": "raisely-deployment.html",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'",
+    "start": "echo 'Static site - no start needed'"
+  },
+  "keywords": ["website", "earrings", "zara", "fundraising"],
+  "author": "Z & M Co.",
+  "license": "MIT"
+}

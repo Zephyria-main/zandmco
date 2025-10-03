@@ -4,20 +4,505 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Z & M Co. - Earrings by Zara</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Argent:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Z & M Co. Custom Styles */
+
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Argent:wght@400;500;600&display=swap');
+
+        /* Color Variables */
+        :root {
+            --primary-pink: #f8b5c1;
+            --light-beige: #f5f1e8;
+            --white: #ffffff;
+            --black: #000000;
+            --text-gray: #333333;
+        }
+
+        /* Typography */
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .sans-font {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            background-color: var(--white);
+        }
+
+        .brand-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 5rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .brand-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .mission-statement {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 0 20px 40px 20px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(8, 300px);
+            gap: 20px;
+            margin: 5px 0 0 0;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Grid positioning */
+        .grid-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+        .grid-item:nth-child(2) { grid-column: 2 / 4; grid-row: 1; }
+        .grid-item:nth-child(3) { grid-column: 1; grid-row: 2; }
+        .grid-item:nth-child(4) { grid-column: 2; grid-row: 2; }
+        .grid-item:nth-child(5) { grid-column: 3; grid-row: 2; }
+        .grid-item:nth-child(6) { grid-column: 1; grid-row: 3; }
+        .grid-item:nth-child(7) { grid-column: 2; grid-row: 3; }
+        .grid-item:nth-child(8) { grid-column: 3; grid-row: 3; }
+        .grid-item:nth-child(9) { grid-column: 1 / 3; grid-row: 4; }
+        .grid-item:nth-child(10) { grid-column: 3; grid-row: 4; }
+        .grid-item:nth-child(11) { grid-column: 1; grid-row: 5; }
+        .grid-item:nth-child(12) { grid-column: 2 / 4; grid-row: 5; }
+        .grid-item:nth-child(13) { grid-column: 1; grid-row: 6; }
+        .grid-item:nth-child(14) { grid-column: 2; grid-row: 6; }
+        .grid-item:nth-child(15) { grid-column: 3; grid-row: 6; }
+        .grid-item:nth-child(16) { grid-column: 1; grid-row: 7; }
+        .grid-item:nth-child(17) { grid-column: 2; grid-row: 7; }
+        .grid-item:nth-child(18) { grid-column: 3; grid-row: 7; }
+        .grid-item:nth-child(19) { grid-column: 1; grid-row: 8; }
+        .grid-item:nth-child(20) { grid-column: 2; grid-row: 8; }
+        .grid-item:nth-child(21) { grid-column: 3; grid-row: 8; }
+
+        /* Image containers */
+        .image-container {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Image overlays */
+        .image-overlay {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(248, 181, 193, 0.9);
+            color: var(--white);
+            padding: 12px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .image-overlay.right {
+            right: 0;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .image-overlay.left {
+            left: 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Hover effects for image links */
+        .image-link:hover .hover-label.right {
+            background-color: var(--primary-pink);
+            color: var(--white);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-link:hover .hover-label.left {
+            background-color: var(--primary-pink);
+            color: var(--white);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Text content styles */
+        .zara-story {
+            background-color: var(--light-beige);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .zara-story .story-content {
+            font-family: 'Argent', serif;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: var(--text-gray);
+        }
+
+        .zara-story .story-content p {
+            margin-bottom: 15px;
+        }
+
+        .zara-story .story-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Fundraising stats */
+        .fundraising-stats {
+            background-color: var(--white);
+            padding: 30px;
+            border: 2px solid var(--primary-pink);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .fundraising-stats #raisely-tally {
+            font-family: 'EB Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-pink);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .fundraising-stats .year-section {
+            margin-bottom: 15px;
+        }
+
+        .fundraising-stats .year-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .fundraising-stats .year-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 5px;
+        }
+
+        .fundraising-stats .year-section p {
+            font-family: 'Argent', serif;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        /* ANU donation section */
+        .anu-donation {
+            background-color: var(--white);
+            padding: 20px;
+            border: 2px solid var(--primary-pink);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .anu-donation .image-container {
+            height: 120px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .anu-donation .image-container img {
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .anu-donation .donation-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* Donate section */
+        .donate-section {
+            background-color: var(--white);
+            padding: 20px;
+            border: 2px solid var(--primary-pink);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .donate-section .image-container {
+            height: 120px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .donate-section .image-container img {
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .donate-section .donation-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 2% auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            color: var(--text-gray);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            z-index: 1001;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--primary-pink);
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(21, 250px);
+                gap: 15px;
+            }
+
+            .grid-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+            .grid-item:nth-child(2) { grid-column: 1; grid-row: 2; }
+            .grid-item:nth-child(3) { grid-column: 1; grid-row: 3; }
+            .grid-item:nth-child(4) { grid-column: 1; grid-row: 4; }
+            .grid-item:nth-child(5) { grid-column: 1; grid-row: 5; }
+            .grid-item:nth-child(6) { grid-column: 1; grid-row: 6; }
+            .grid-item:nth-child(7) { grid-column: 1; grid-row: 7; }
+            .grid-item:nth-child(8) { grid-column: 1; grid-row: 8; }
+            .grid-item:nth-child(9) { grid-column: 1; grid-row: 9; }
+            .grid-item:nth-child(10) { grid-column: 1; grid-row: 10; }
+            .grid-item:nth-child(11) { grid-column: 1; grid-row: 11; }
+            .grid-item:nth-child(12) { grid-column: 1; grid-row: 12; }
+            .grid-item:nth-child(13) { grid-column: 1; grid-row: 13; }
+            .grid-item:nth-child(14) { grid-column: 1; grid-row: 14; }
+            .grid-item:nth-child(15) { grid-column: 1; grid-row: 15; }
+            .grid-item:nth-child(16) { grid-column: 1; grid-row: 16; }
+            .grid-item:nth-child(17) { grid-column: 1; grid-row: 17; }
+            .grid-item:nth-child(18) { grid-column: 1; grid-row: 18; }
+            .grid-item:nth-child(19) { grid-column: 1; grid-row: 19; }
+            .grid-item:nth-child(20) { grid-column: 1; grid-row: 20; }
+            .grid-item:nth-child(21) { grid-column: 1; grid-row: 21; }
+
+            .brand-title {
+                font-size: 3rem;
+            }
+
+            .brand-tagline {
+                font-size: 0.9rem;
+            }
+
+            .mission-statement {
+                font-size: 0.8rem;
+            }
+
+            .zara-story .story-content p {
+                font-size: 0.7rem;
+                line-height: 1.4;
+            }
+
+            .fundraising-stats #raisely-tally {
+                font-size: 1.2rem;
+            }
+
+            .fundraising-stats .year-section h3 {
+                font-size: 0.9rem;
+            }
+
+            .fundraising-stats .year-section p {
+                font-size: 0.8rem;
+            }
+
+            .anu-donation .image-container {
+                height: 48px;
+            }
+
+            .anu-donation .image-container img {
+                object-fit: contain;
+                object-position: center;
+            }
+
+            .donate-section .image-container {
+                height: 130px;
+            }
+
+            .donate-section .image-container img {
+                object-fit: contain;
+                object-position: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-grid {
+                grid-template-rows: repeat(21, 200px);
+                gap: 10px;
+            }
+
+            .brand-title {
+                font-size: 2.5rem;
+            }
+
+            .brand-tagline {
+                font-size: 0.8rem;
+            }
+
+            .mission-statement {
+                font-size: 0.75rem;
+            }
+
+            .zara-story {
+                padding: 20px;
+            }
+
+            .fundraising-stats {
+                padding: 20px;
+            }
+
+            .anu-donation {
+                padding: 15px;
+            }
+
+            .donate-section {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <h1 class="brand-title">Z & M Co.</h1>
             <p class="brand-tagline">EARRINGS BY ZARA</p>
             <div class="mission-statement">
-                <p>ZARA'S EARRINGS FUND CHILDCARE AND CONFERENCE ACCESS FOR FEMALE BRAIN CANCER RESEARCHERS AT ANU —<br>SUPPORTING SCIENCE AND FAMILY ONE PAIR OF EARRINGS AT A TIME.</p>
+                <p>We are a social enterprise that creates beautiful, handmade earrings to support women's education in developing countries. Every purchase helps fund scholarships and educational programs.</p>
             </div>
         </div>
     </header>
@@ -25,161 +510,185 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- 3x3 Grid Layout -->
             <div class="main-grid">
-                <!-- Row 1: Founder button (col 1) + Founder image (cols 2-3) -->
-                <a href="/meetzara" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/meet.jpg" alt="Zara, founder of Z & M Co." class="grid-image">
-                        <div class="image-overlay hover-label right">MEET THE FOUNDER: ZARA</div>
-                    </div>
-                </a>
+                <!-- Row 1 -->
+                <div class="grid-item">
+                    <a href="/meetzara" class="image-link">
+                        <div class="image-container">
+                            <img src="imgs/meet.jpg" alt="Meet the Founder">
+                            <div class="image-overlay right hover-label">MEET THE FOUNDER: ZARA</div>
+                        </div>
+                    </a>
+                </div>
                 
-                <a href="#" class="image-link grid-item founder-image-large">
+                <div class="grid-item">
                     <div class="image-container">
-                        <img src="imgs/allpeople.jpg" alt="Z & M Co. team and supporters" class="grid-image">
+                        <img src="imgs/allpeople.jpg" alt="All People">
                     </div>
-                </a>
+                </div>
 
-                <!-- Row 2: Zara's story text + Two individual images -->
-                <div class="grid-item zara-story">
-                    <div class="story-content">
-                        <p>Hi, I'm Zara – Founder of Z and M Co.<br><br>
-                        In 2023, when I was just 8 years old, I started Z and M Co. to support women in brain cancer research. After my first stall, Australian National University (ANU) created the Zara Fund for Women in Brain Cancer Research in response to my initiative. The Zara Fund helps cover childcare and supports female researchers to travel to conferences, so they can keep doing their life-saving brain cancer research, while raising their families, especially mums trying to balance science and family.</p>
-                    </div>
-                </div>
-                <a href="#" class="image-link grid-item" id="donate-button">
-                    <div class="image-container">
-                        <img src="imgs/donate.jpg" alt="Donate to Z & M Co." class="grid-image">
-                        <div class="image-overlay hover-label right">DONATE</div>
-                    </div>
-                </a>
-                <div class="grid-item fundraising-stats">
-                    <div class="stats-content">
-                        <div class="current-tally">
-                            <div id="raisely-tally">Loading...</div>
-                        </div>
-                        <br>
-                        <div class="historical-stats">
-                            <div class="year-section">
-                                <h3>2023</h3>
-                                <p>• Day of the stall Raised: $14,652</p>
-                            </div>
-                            <div class="year-section">
-                                <h3>2024</h3>
-                                <p>• Day of the Stall: $16,500</p>
-                                <p>• Super Donor Contributions: $13,500</p>
-                            </div>
+                <!-- Row 2 -->
+                <div class="grid-item">
+                    <div class="zara-story">
+                        <div class="story-content">
+                            <p>Zara founded Z & M Co. in 2023 with a vision to combine her passion for jewelry design with her commitment to social impact. Each piece is carefully crafted by hand, ensuring both beauty and quality.</p>
+                            <p>Our mission extends beyond creating beautiful earrings - we're building a community of conscious consumers who believe in the power of education to transform lives.</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Row 3: MEDIA image + r3c2 image -->
-                <a href="/media" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/media.jpg" alt="Z & M Co. media coverage" class="grid-image">
-                        <div class="image-overlay hover-label right">MEDIA</div>
-                    </div>
-                </a>
-                <a href="#" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/r3c2.jpg" alt="Z & M Co. content" class="grid-image">
-                    </div>
-                </a>
-                <a href="#" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/r3c3.jpg" alt="Z & M Co. content" class="grid-image">
-                    </div>
-                </a>
+                <div class="grid-item">
+                    <a href="#" id="donate-button" class="image-link">
+                        <div class="image-container">
+                            <img src="imgs/donate.jpg" alt="Donate">
+                            <div class="image-overlay right hover-label">DONATE</div>
+                        </div>
+                    </a>
+                </div>
                 
-                <!-- Row 4: Spanning image (cols 1-2) + SHOP button -->
-                <a href="#" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/r4c12.jpg" alt="Z & M Co. content" class="grid-image">
-                    </div>
-                </a>
-                <a href="/shop" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/shop.jpg" alt="Z & M Co. shop" class="grid-image">
-                        <div class="image-overlay hover-label right">SHOP</div>
-                    </div>
-                </a>
-                
-                <!-- Row 5: bag.jpg image + girls.jpg spanning image -->
-                <a href="#" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/bag.jpg" alt="Z & M Co. bag" class="grid-image">
-                    </div>
-                </a>
-                <a href="#" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/girls.jpg" alt="Z & M Co. girls" class="grid-image">
-                    </div>
-                </a>
-                
-                <!-- Row 6: 2023 team gallery + 2024 team gallery -->
-                <a href="/2023team" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/2023team.jpg" alt="Z & M Co. 2023 team" class="grid-image">
-                        <div class="image-overlay hover-label right">2023 - Meet the team and explore the photo gallery</div>
-                    </div>
-                </a>
-                <a href="/2024team" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/2024team.jpg" alt="Z & M Co. 2024 team" class="grid-image">
-                        <div class="image-overlay hover-label right">2024 - Meet the team and explore the photo gallery</div>
-                    </div>
-                </a>
-                <a href="/2025team" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/2025team.jpg" alt="Z & M Co. 2025 team" class="grid-image">
-                        <div class="image-overlay hover-label right">2025 - Meet the team and explore the photo gallery</div>
-                    </div>
-                </a>
-                
-                <!-- Row 7: r7c1.jpg + ANU donation info + r7c3.jpg -->
-                <a href="#" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/r7c1.jpg" alt="Z & M Co. content" class="grid-image">
-                    </div>
-                </a>
-                <div class="grid-item anu-donation">
-                    <div class="donation-text">
-                        <h3>ALL DONATIONS will GO DIRECTLY TOWARD</h3>
-                        <h2>Zara Skepev Fund for Women in Brain Cancer Research</h2>
-                        <h3>AT THE AUSTRALIAN NATIONAL UNIVERSITY</h3>
-                    </div>
-                    <div class="image-container">
-                        <img src="imgs/anu.jpg" alt="Australian National University" class="grid-image">
+                <div class="grid-item">
+                    <div class="fundraising-stats">
+                        <div id="raisely-tally">$0</div>
+                        <div class="year-section">
+                            <h3>2023</h3>
+                            <p>Raised $2,500 for women's education scholarships</p>
+                        </div>
+                        <div class="year-section">
+                            <h3>2024</h3>
+                            <p>Goal: $5,000 for educational programs</p>
+                        </div>
                     </div>
                 </div>
-                <a href="#" class="image-link grid-item">
-                    <div class="image-container">
-                        <img src="imgs/r7c3.jpg" alt="Z & M Co. content" class="grid-image">
-                    </div>
-                </a>
+
+                <!-- Row 3 -->
+                <div class="grid-item">
+                    <a href="/media" class="image-link">
+                        <div class="image-container">
+                            <img src="imgs/media.jpg" alt="Media">
+                            <div class="image-overlay right hover-label">MEDIA</div>
+                        </div>
+                    </a>
+                </div>
                 
-                <!-- Row 8: r8c1.jpg + DONATE HERE + r8c3.jpg -->
-                <a href="#" class="image-link grid-item">
+                <div class="grid-item">
                     <div class="image-container">
-                        <img src="imgs/r8c1.jpg" alt="Z & M Co. content" class="grid-image">
-                    </div>
-                </a>
-                <div class="grid-item donate-section">
-                    <div class="donate-text">
-                        <h2>DONATE HERE</h2>
-                    </div>
-                    <div class="image-container">
-                        <img src="imgs/zqr.png" alt="Donation QR Code" class="grid-image">
+                        <img src="imgs/r3c2.jpg" alt="Row 3 Column 2">
                     </div>
                 </div>
-                <a href="#" class="image-link grid-item">
+                
+                <div class="grid-item">
                     <div class="image-container">
-                        <img src="imgs/r8c3.jpg" alt="Z & M Co. content" class="grid-image">
+                        <img src="imgs/r3c3.jpg" alt="Row 3 Column 3">
                     </div>
-                </a>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="grid-item">
+                    <div class="image-container">
+                        <img src="imgs/r4c12.jpg" alt="Row 4 Columns 1-2">
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <a href="/shop" class="image-link">
+                        <div class="image-container">
+                            <img src="imgs/shop.jpg" alt="Shop">
+                            <div class="image-overlay right hover-label">SHOP</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="grid-item">
+                    <div class="image-container">
+                        <img src="imgs/bag.jpg" alt="Bag">
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="image-container">
+                        <img src="imgs/girls.jpg" alt="Girls">
+                    </div>
+                </div>
+
+                <!-- Row 6 -->
+                <div class="grid-item">
+                    <a href="/2023team" class="image-link">
+                        <div class="image-container">
+                            <img src="imgs/2023team.jpg" alt="2023 Team">
+                            <div class="image-overlay right hover-label">2023 - Meet the team and explore the photo gallery</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item">
+                    <a href="/2024team" class="image-link">
+                        <div class="image-container">
+                            <img src="imgs/2024team.jpg" alt="2024 Team">
+                            <div class="image-overlay right hover-label">2024 - Meet the team and explore the photo gallery</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="grid-item">
+                    <a href="/2025team" class="image-link">
+                        <div class="image-container">
+                            <img src="imgs/2025team.jpg" alt="2025 Team">
+                            <div class="image-overlay right hover-label">2025 - Meet the team and explore the photo gallery</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Row 7 -->
+                <div class="grid-item">
+                    <div class="image-container">
+                        <img src="imgs/r7c1.jpg" alt="Row 7 Column 1">
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="anu-donation">
+                        <div class="image-container">
+                            <img src="imgs/anu.jpg" alt="ANU">
+                        </div>
+                        <div class="donation-text">
+                            ANU<br>
+                            Donation<br>
+                            Information
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="image-container">
+                        <img src="imgs/r7c3.jpg" alt="Row 7 Column 3">
+                    </div>
+                </div>
+
+                <!-- Row 8 -->
+                <div class="grid-item">
+                    <div class="image-container">
+                        <img src="imgs/r8c1.jpg" alt="Row 8 Column 1">
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="donate-section">
+                        <div class="image-container">
+                            <img src="imgs/zqr.png" alt="QR Code">
+                        </div>
+                        <div class="donation-text">
+                            DONATE HERE
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="image-container">
+                        <img src="imgs/r8c3.jpg" alt="Row 8 Column 3">
+                    </div>
+                </div>
             </div>
-
         </div>
     </main>
 
@@ -194,40 +703,31 @@
     </div>
 
     <script>
-        // Fetch Raisely campaign data
+        // Fetch Raisely data
         async function fetchRaiselyData() {
             try {
-                // For localhost development, show a placeholder
-                // In production, this will connect to the actual Raisely API
-                document.getElementById('raisely-tally').textContent = '$0';
+                // For localhost, show placeholder data
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    document.getElementById('raisely-tally').textContent = '$0';
+                    return;
+                }
                 
-                // Uncomment this when deployed to production:
+                // Uncomment this for production Raisely integration
                 /*
-                const response = await fetch('https://api.raisely.com/v3/campaigns/a7d377a0-981e-11f0-b4e8-972118eb4936', {
-                    headers: {
-                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlblV1aWQiOiI2NGU1NTVmMC05ZjY1LTExZjAtYmU4OC03MzQxNmQyODE5ODIiLCJleHAiOjE3NjA2MDE0MjguMTg0LCJpYXQiOjE3NTkzOTE4Mjh9.OIsYeO64MGjp54ESmTI-tamobVIONWI2Bcfrc9WKwZg'
-                    }
-                });
-                
-                if (response.ok) {
-                    const data = await response.json();
-                    const raised = data.data.raised || 0;
-                    document.getElementById('raisely-tally').textContent = `$${raised.toLocaleString()}`;
-                } else {
-                    document.getElementById('raisely-tally').textContent = 'Campaign Data';
+                const response = await fetch('https://api.raisely.com/v3/campaigns/zandmco');
+                const data = await response.json();
+                if (data.data && data.data.tally) {
+                    document.getElementById('raisely-tally').textContent = `$${data.data.tally.toLocaleString()}`;
                 }
                 */
             } catch (error) {
                 console.error('Error fetching Raisely data:', error);
-                document.getElementById('raisely-tally').textContent = 'Campaign Data';
+                document.getElementById('raisely-tally').textContent = '$0';
             }
         }
 
-        // Load data when page loads
-        document.addEventListener('DOMContentLoaded', fetchRaiselyData);
-
-        // Handle internal links that aren't built yet
-        document.addEventListener('DOMContentLoaded', function() {
+        // Handle internal links
+        function internalLinks() {
             const internalLinks = document.querySelectorAll('a[href^="/"]');
             internalLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -235,7 +735,7 @@
                     alert('This page is not built yet!');
                 });
             });
-        });
+        }
 
         // Handle donation modal
         document.addEventListener('DOMContentLoaded', function() {
@@ -271,6 +771,10 @@
                     document.body.style.overflow = 'auto'; // Restore scrolling
                 }
             });
+
+            // Initialize functions
+            fetchRaiselyData();
+            internalLinks();
         });
     </script>
 </body>
