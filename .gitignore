@@ -1,0 +1,7 @@
+// the raisely config file - don't commit this, it contains credentials
+.raisely.json
+
+// standard ignores
+.DS_Store
+.env
+node_modules
